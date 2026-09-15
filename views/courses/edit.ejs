@@ -1,0 +1,49 @@
+<%- include("../partials/header") %>
+
+<section class="form-container">
+  <h2>Edit Course</h2>
+
+  <form action="/courses/<%= course._id %>/update" method="POST">
+
+    <label>Course Name</label>
+    <input
+      type="text"
+      name="courseName"
+      value="<%= course.courseName %>"
+      required
+    >
+
+    <label>Description</label>
+    <textarea name="description" required><%= course.description %></textarea>
+
+    <label>Duration in Weeks</label>
+    <input
+      type="number"
+      name="duration"
+      value="<%= course.duration %>"
+      min="1"
+      required
+    >
+
+    <label>Instructor</label>
+    <input
+      type="text"
+      name="instructor"
+      value="<%= course.instructor %>"
+      required
+    >
+
+    <label>Max Students</label>
+    <input
+      type="number"
+      name="maxStudents"
+      value="<%= course.maxStudents %>"
+      min="1"
+      required
+    >
+
+    <button type="submit">Update Course</button>
+  </form>
+</section>
+
+<%- include("../partials/footer") %>
