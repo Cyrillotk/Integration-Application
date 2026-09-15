@@ -1,0 +1,38 @@
+<%- include("../partials/header") %>
+
+<section>
+  <div class="page-heading">
+    <h2>Available Courses</h2>
+    <a class="button" href="/courses/new">Add Course</a>
+  </div>
+
+  <% if (courses.length === 0) { %>
+    <p>No courses available.</p>
+  <% } %>
+
+  <div class="course-list">
+    <% courses.forEach(course => { %>
+
+      <article class="course-card">
+        <h3><%= course.courseName %></h3>
+
+        <p><%= course.description %></p>
+
+        <p><strong>Duration:</strong> <%= course.duration %> weeks</p>
+        <p><strong>Instructor:</strong> <%= course.instructor %></p>
+        <p><strong>Maximum Students:</strong> <%= course.maxStudents %></p>
+
+        <div class="actions">
+          <a href="/courses/<%= course._id %>/edit">Edit</a>
+
+          <form action="/courses/<%= course._id %>/delete" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </article>
+
+    <% }) %>
+  </div>
+</section>
+
+<%- include("../partials/footer") %>
